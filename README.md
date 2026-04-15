@@ -1,46 +1,49 @@
-This is a **multi-agent conversational AI application** powered by **[LLaMA3 via Groq API]** and **[LangChain]**, designed to **extract**, **summarize**, and **interact** with YouTube videos intelligently. It enables rich, one-on-one conversations while maintaining contextual memory and fast responses using Groq hardware.
+<div align="center">
 
----
-<img width="1536" height="1024" alt="ChatGPT Image Jul 31, 2025, 06_54_08 PM" src="https://github.com/user-attachments/assets/85811293-13a2-4c42-9422-111187ebd326" />
+# 🚀 Groq-Powered Multi-Agent YouTube Conversational AI
 
----
+**Transform YouTube videos into interactive knowledge sources using a multi-agent AI architecture.**
 
-## 📌 Features
+[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://python.org)
+[![LangChain](https://img.shields.io/badge/LangChain-LLM-green)](https://langchain.com/)
+[![Groq](https://img.shields.io/badge/Groq-Fast_Inference-f56038)](https://groq.com/)
+[![FAISS](https://img.shields.io/badge/FAISS-Vector_DB-blueviolet)](https://github.com/facebookresearch/faiss)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-- ✅ **Transcript Extraction** – Auto-fetches transcript from any YouTube video.
-- ✅ **Summarization Agent** – Summarizes long transcripts into digestible chunks.
-- ✅ **Contextual QA Agent** – Answers user queries based on video content.
-- ✅ **Conversational Memory** – Maintains chat history for seamless interaction.
-- ✅ **Multi-Agent Workflow** – Agents work sequentially to perform specific tasks.
-- ✅ **Groq + LLaMA3** – Ultra-fast, low-latency LLM inference powered by Groq.
-
----
-
-## 🧠 Architecture
-
-### 🧩 Agent Overview
-
-| Agent            | Role        | Description                                                                 |
-|------------------|-------------|-----------------------------------------------------------------------------|
-| Transcript Agent | 👂 Listener | Uses `youtube_transcript_api` to fetch captions from a YouTube URL.        |
-| Summarizer Agent | 📄 Summarizer | Uses LLaMA3 via Groq to summarize long transcripts.                         |
-| QA Agent         | 🤖 Answerer | Uses LangChain's `ConversationalRetrievalChain` to answer contextually.    |
+</div>
 
 ---
 
-## 🚀 How It Works
+## 📖 Project Description
 
-1. **User inputs a YouTube URL**
-2. 🧠 **Transcript Agent** fetches the transcript using `youtube_transcript_api`.
-3. 📄 **Summarizer Agent** condenses the transcript using LLaMA3 (via Groq API).
-4. 🗂️ **Vector Store** is built using **FAISS** for semantic search on transcript content.
-5. 🤖 **QA Agent** uses **ConversationalRetrievalChain** to generate responses based on:
-   - The query
-   - Vector database (semantic context)
-   - Chat memory (for continuity)
-6. ✨ **Response is generated** with full context from video and conversation history.
+This project introduces a cutting-edge **Multi-Agent Conversational AI** system designed to intelligently interact with YouTube videos. By leveraging the ultra-fast inference capabilities of the **Groq API** and **LLaMA3**, the system seamlessly extracts video transcripts, generates concise summaries, and empowers users to ask contextual questions about the video's content.
+
+Stop watching hours of video to find specific information—chat directly with the video and get instant, context-aware answers!
 
 ---
 
+## ⚙️ Core Architecture
+
+The system relies on a sequential multi-agent workflow, coordinating specialized AI agents to process data from URL to Q&A.
+
+### 🤖 The Agents
+1. **📝 Transcript Agent**: Extracts the raw video captions natively using `youtube_transcript_api`.
+2. **✂️ Summarizer Agent**: Processes the extracted text using **LLaMA3 (via Groq API)** to produce a high-level, comprehensive summary.
+3. **💬 QA Agent**: Utilizes LangChain's `ConversationalRetrievalChain` to facilitate contextual question-answering, backed by chat memory and a vector database.
+
+### 🔄 System Workflow
+
+```mermaid
+graph TD
+    A[YouTube URL Input] --> B(Transcript Agent)
+    B -->|youtube_transcript_api| C[Raw Transcript Data]
+    C --> D(Summarizer Agent)
+    D -->|LLaMA3 + Groq| E[Video Summary]
+    C --> F[Text Chunking & Embedding]
+    F --> G[(FAISS Vector DB)]
+    H[User Asks Question] --> I(QA Agent)
+    G -->|Semantic Search| I
+    J[(Chat Memory)] --> I
+    I -->|LangChain + LLaMA3| K[Context-Aware Answer]
 
 
